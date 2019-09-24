@@ -11,8 +11,6 @@ import (
 	"runtime"
 	"sync"
 	"sync/atomic"
-
-	"github.com/getlantern/golog"
 )
 
 var (
@@ -39,8 +37,6 @@ type MenuItem struct {
 }
 
 var (
-	log = golog.LoggerFor("systray")
-
 	systrayReady  func()
 	systrayExit   func()
 	menuItems     = make(map[int32]*MenuItem)
