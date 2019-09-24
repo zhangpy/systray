@@ -36,7 +36,7 @@ type MenuItem struct {
 	checked bool
 }
 
-vsystrayar (
+var (
 	systrayReady  func()
 	systrayExit   func()
 	menuItems     = make(map[int32]*MenuItem)
