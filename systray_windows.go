@@ -823,7 +823,7 @@ func iconBytesToFilePath(iconBytes []byte) (string, error) {
 	if _, err := os.Stat(iconFilePath); os.IsNotExist(err) {
 		if err := ioutil.WriteFile(iconFilePath, iconBytes, 0644); err != nil {
 			log.Printf("Unable to write icon data to temp file: %v\n", err)
-			return
+			// return
 		}
 	}
 	return iconFilePath, nil
