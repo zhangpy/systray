@@ -835,7 +835,7 @@ func iconBytesToFilePath(iconBytes []byte) (string, error) {
 func SetIcon(iconBytes []byte) {
 	iconFilePath, err := iconBytesToFilePath(iconBytes)
 	if err != nil {
-		log.Errorf("Unable to write icon data to temp file: %v", err)
+		log.Printf("Unable to write icon data to temp file: %v\n", err)
 		return
 	}
 	if err := wt.setIcon(iconFilePath); err != nil {
@@ -869,19 +869,19 @@ func (item *MenuItem) parentId() uint32 {
 func (item *MenuItem) SetIcon(iconBytes []byte) {
 	iconFilePath, err := iconBytesToFilePath(iconBytes)
 	if err != nil {
-		log.Errorf("Unable to write icon data to temp file: %v", err)
+		log.Printf("Unable to write icon data to temp file: %v\n", err)
 		return
 	}
 
 	h, err := wt.loadIconFrom(iconFilePath)
 	if err != nil {
-		log.Errorf("Unable to load icon from temp file: %v", err)
+		log.Printf("Unable to load icon from temp file: %v\n", err)
 		return
 	}
 
 	h, err = wt.iconToBitmap(h)
 	if err != nil {
-		log.Errorf("Unable to convert icon to bitmap: %v", err)
+		log.Printf("Unable to convert icon to bitmap: %v\n", err)
 		return
 	}
 	wt.muMenuItemIcons.Lock()
@@ -890,7 +890,7 @@ func (item *MenuItem) SetIcon(iconBytes []byte) {
 
 	err = wt.addOrUpdateMenuItem(uint32(item.id), item.parentId(), item.title, item.disabled, item.checked)
 	if err != nil {
-		log.Errorf("Unable to addOrUpdateMenuItem: %v", err)
+		log.Printf("Unable to addOrUpdateMenuItem: %v\n", err)
 		return
 	}
 }
